@@ -1,5 +1,5 @@
 import React from 'react';
-import CourseList from './courselist';
+import CourseList from './CourseList';
 
 const Home = () => {
   return (

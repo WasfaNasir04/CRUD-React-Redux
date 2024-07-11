@@ -2,7 +2,7 @@ const initialState = {
   courses: []
 };
 
-export default function courseReducer(state = initialState, action) {
+export default function coursereducer(state = initialState, action) {
   switch (action.type) {
     case 'ADD_COURSE':
       return {

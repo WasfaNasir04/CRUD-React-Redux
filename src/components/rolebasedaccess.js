@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import CourseList from './courselist';
+import CourseList from './CourseList';
 import CourseForm from './courseform';
 
 const RoleBasedAccess = ({ role }) => (

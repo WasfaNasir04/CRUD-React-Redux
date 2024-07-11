@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 const CourseList = () => {
-  const courses = useSelector((state) => state.courses);
+  const courses = useSelector((state) => state.courses.courses);
 
   return (
     <div>

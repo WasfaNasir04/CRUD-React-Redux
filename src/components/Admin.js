@@ -1,6 +1,6 @@
 import React from 'react';
 import CourseForm from './courseform';
-import CourseList from './courselist';
+import CourseList from './CourseList';
 
 const Admin = () => {
   return (
