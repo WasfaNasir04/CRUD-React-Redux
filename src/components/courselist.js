@@ -1,16 +1,19 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-const CourseList = ({ courses }) => (
-  <ul>
-    {courses.map(course => (
-      <li key={course.id}>{course.name}</li>
-    ))}
-  </ul>
-);
+const CourseList = () => {
+  const courses = useSelector((state) => state.courses);
 
-const mapStateToProps = (state) => ({
-  courses: state.course.courses
-});
+  return (
+    <div>
+      <h2>Course List</h2>
+      <ul>
+        {courses.map((course) => (
+          <li key={course.id}>{course.name}</li>
+        ))}
+      </ul>
+    </div>
+  );
+};
 
-export default connect(mapStateToProps)(CourseList);
+export default CourseList;

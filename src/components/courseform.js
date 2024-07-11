@@ -1,64 +1,31 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
-import { addCourse, updateCourse, deleteCourse } from '../redux/actions/courseactions';
+import { useDispatch } from 'react-redux';
+import { addCourse } from '../redux/actions/courseactions';
 
-const CourseForm = ({ addCourse, updateCourse, deleteCourse, courses }) => {
-  const [course, setCourse] = useState({ id: '', name: '' });
-
-  const handleChange = (e) => {
-    setCourse({ ...course, [e.target.name]: e.target.value });
-  };
+const CourseForm = () => {
+  const [courseName, setCourseName] = useState('');
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (course.id) {
-      updateCourse(course);
-    } else {
-      addCourse({ ...course, id: Date.now() });
-    }
-    setCourse({ id: '', name: '' });
-  };
-
-  const handleEdit = (course) => {
-    setCourse(course);
-  };
-
-  const handleDelete = (id) => {
-    deleteCourse(id);
+    dispatch(addCourse({ id: Date.now(), name: courseName }));
+    setCourseName('');
   };
 
   return (
     <div>
+      <h2>Add Course</h2>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
-          name="name"
-          value={course.name}
-          onChange={handleChange}
+          value={courseName}
+          onChange={(e) => setCourseName(e.target.value)}
+          placeholder="Course Name"
         />
-        <button type="submit">Save</button>
+        <button type="submit">Add</button>
       </form>
-      <ul>
-        {courses.map(course => (
-          <li key={course.id}>
-            {course.name}
-            <button onClick={() => handleEdit(course)}>Edit</button>
-            <button onClick={() => handleDelete(course.id)}>Delete</button>
-          </li>
-        ))}
-      </ul>
     </div>
   );
 };
 
-const mapStateToProps = (state) => ({
-  courses: state.course.courses
-});
-
-const mapDispatchToProps = {
-  addCourse,
-  updateCourse,
-  deleteCourse
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(CourseForm);
+export default CourseForm;

@@ -1,8 +1,8 @@
+// src/redux/reducers/index.js
 import { combineReducers } from 'redux';
 import courseReducer from './coursereducer';
-import userReducer from './userreducer';
 
 export default combineReducers({
-  course: courseReducer,
-  user: userReducer
+  courses: courseReducer,
+  // Add other reducers here if needed
 });

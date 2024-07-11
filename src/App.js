@@ -1,14 +1,22 @@
 import React from 'react';
-import { Provider } from 'react-redux';
-import store from './redux/store';
-import RoleBasedAccess from './components/rolebasedaccess';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from './components/Home';
+import Admin from './components/Admin';
+import Navbar from './components/Navbar';
+import './App.css';
 
-const App = () => (
-  <Provider store={store}>
-    <div className="App">
-      <RoleBasedAccess />
-    </div>
-  </Provider>
-);
+function App() {
+  return (
+    <Router>
+      <Navbar />
+      <div className="App">
+        <Routes>
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </div>
+    </Router>
+  );
+}
 
 export default App;
